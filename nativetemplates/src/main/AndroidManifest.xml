@@ -1,2 +1,11 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
-    package="com.google.ads.nativetemplates"/>
+  package="com.google.android.ads.nativetemplates">
+  <uses-sdk
+      android:minSdkVersion="16"
+      android:targetSdkVersion="28"/>
+  <application android:supportsRtl="true">
+
+  </application>
+
+
+</manifest>

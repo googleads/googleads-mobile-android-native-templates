@@ -44,7 +44,7 @@
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent"
             app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintEnd_toStartOf="@id/content"
+            app:layout_constraintEnd_toStartOf="@+id/content"
             />
         <android.support.constraint.ConstraintLayout
             android:layout_width="@dimen/gnt_no_size"
@@ -66,7 +66,7 @@
               android:layout_width="match_parent"
               android:layout_height="@dimen/gnt_no_size"
               android:layout_weight="@dimen/gnt_text_row_weight"
-              app:layout_constraintBottom_toTopOf="@id/row_two"
+              app:layout_constraintBottom_toTopOf="@+id/row_two"
               app:layout_constraintEnd_toEndOf="parent"
               app:layout_constraintStart_toStartOf="parent"
               app:layout_constraintTop_toTopOf="parent"
@@ -98,7 +98,7 @@
               android:layout_width="match_parent"
               android:layout_height="@dimen/gnt_no_size"
               android:layout_weight="@dimen/gnt_text_row_weight"
-              app:layout_constraintBottom_toTopOf="@id/cta"
+              app:layout_constraintBottom_toTopOf="@+id/cta"
               app:layout_constraintEnd_toEndOf="parent"
               app:layout_constraintStart_toStartOf="parent"
               app:layout_constraintTop_toBottomOf="@id/headline"

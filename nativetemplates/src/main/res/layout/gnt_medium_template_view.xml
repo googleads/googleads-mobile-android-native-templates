@@ -39,7 +39,7 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@id/media_view"
-        app:layout_constraintBottom_toTopOf="@id/body"
+        app:layout_constraintBottom_toTopOf="@+id/body"
         android:id="@+id/middle"
         >
       <android.support.constraint.ConstraintLayout
@@ -85,7 +85,7 @@
               android:layout_width="match_parent"
               android:layout_height="@dimen/gnt_no_size"
               android:layout_weight="0.5"
-              app:layout_constraintBottom_toTopOf="@id/row_two"
+              app:layout_constraintBottom_toTopOf="@+id/row_two"
               app:layout_constraintEnd_toEndOf="parent"
               app:layout_constraintStart_toStartOf="parent"
               app:layout_constraintTop_toTopOf="parent"
@@ -192,7 +192,7 @@
             android:paddingBottom="@dimen/gnt_default_margin"
             android:paddingLeft="@dimen/gnt_default_margin"
             android:id="@+id/body"
-            app:layout_constraintBottom_toTopOf="@id/cta"
+            app:layout_constraintBottom_toTopOf="@+id/cta"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@id/middle"

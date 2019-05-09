@@ -3,3 +3,4 @@
   <solid android:color="@color/gnt_white" />
   <stroke android:width="2dp" android:color="@color/gnt_outline"/>
 </shape>
+
