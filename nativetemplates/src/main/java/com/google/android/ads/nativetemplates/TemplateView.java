@@ -32,7 +32,6 @@ import com.google.android.gms.ads.formats.MediaView;
 import com.google.android.gms.ads.formats.NativeAd.Image;
 import com.google.android.gms.ads.formats.UnifiedNativeAd;
 import com.google.android.gms.ads.formats.UnifiedNativeAdView;
-
 /** Base class for a template view. * */
 public class TemplateView extends FrameLayout {
 
@@ -67,6 +66,7 @@ public class TemplateView extends FrameLayout {
     initView(context, attrs);
   }
 
+  @RequiresApi(api = Build.VERSION_CODES.LOLLIPOP)
   public TemplateView(Context context, AttributeSet attrs, int defStyleAttr, int defStyleRes) {
     super(context, attrs, defStyleAttr, defStyleRes);
     initView(context, attrs);
@@ -265,17 +265,17 @@ public class TemplateView extends FrameLayout {
   private void initView(Context context, AttributeSet attributeSet) {
 
     TypedArray attributes =
-        context.getTheme().obtainStyledAttributes(attributeSet, R.styleable.TemplateView, 0, 0);
+            context.getTheme().obtainStyledAttributes(attributeSet, R.styleable.TemplateView, 0, 0);
 
     try {
       templateType =
-          attributes.getResourceId(
-              R.styleable.TemplateView_gnt_template_type, R.layout.gnt_medium_template_view);
+              attributes.getResourceId(
+                      R.styleable.TemplateView_gnt_template_type, R.layout.gnt_medium_template_view);
     } finally {
       attributes.recycle();
     }
     LayoutInflater inflater =
-        (LayoutInflater) context.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
+            (LayoutInflater) context.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
     inflater.inflate(templateType, this);
   }
 
