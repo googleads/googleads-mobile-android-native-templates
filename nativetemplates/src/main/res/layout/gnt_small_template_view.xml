@@ -9,13 +9,13 @@
       android:id="@+id/native_ad_view"
       >
 
-    <android.support.constraint.ConstraintLayout
+    <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_height="match_parent"
         android:layout_width="match_parent"
         android:layout_centerInParent="true"
         android:background="@drawable/gnt_outline_shape"
         >
-      <android.support.constraint.ConstraintLayout
+      <androidx.constraintlayout.widget.ConstraintLayout
 
           android:layout_width="@dimen/gnt_no_size"
           android:layout_height="@dimen/gnt_no_size"
@@ -46,7 +46,7 @@
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toStartOf="@+id/content"
             />
-        <android.support.constraint.ConstraintLayout
+        <androidx.constraintlayout.widget.ConstraintLayout
             android:layout_width="@dimen/gnt_no_size"
             android:layout_height="@dimen/gnt_no_size"
             android:layout_marginTop="@dimen/gnt_default_margin"
@@ -174,12 +174,12 @@
               />
 
 
-        </android.support.constraint.ConstraintLayout>
+        </androidx.constraintlayout.widget.ConstraintLayout>
 
 
-      </android.support.constraint.ConstraintLayout>
+      </androidx.constraintlayout.widget.ConstraintLayout>
 
-    </android.support.constraint.ConstraintLayout>
+    </androidx.constraintlayout.widget.ConstraintLayout>
 
   </com.google.android.gms.ads.formats.UnifiedNativeAdView>
 
