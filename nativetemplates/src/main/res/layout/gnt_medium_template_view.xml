@@ -83,6 +83,8 @@
               android:id="@+id/headline"
               android:orientation="horizontal"
               android:layout_width="match_parent"
+              android:gravity="left"
+              android:background="@color/gnt_white"
               android:layout_height="@dimen/gnt_no_size"
               android:layout_weight="0.5"
               app:layout_constraintBottom_toTopOf="@+id/row_two"
@@ -93,13 +95,12 @@
 
             <TextView
                 android:id="@+id/primary"
-                android:background="@color/gnt_white"
                 android:textStyle="bold"
                 android:textSize="@dimen/gnt_text_size_large"
                 android:textColor="@color/gnt_gray"
                 android:lines="1"
                 android:layout_height="match_parent"
-                android:layout_width="match_parent"
+                android:layout_width="wrap_content"
                 android:layout_marginTop="@dimen/gnt_no_margin"
                 android:layout_marginBottom="@dimen/gnt_no_margin"
                 android:layout_marginStart="@dimen/gnt_no_margin"
@@ -161,7 +162,7 @@
             <TextView
                 android:id="@+id/secondary"
                 android:background="@color/gnt_white"
-                android:layout_width="match_parent"
+                android:layout_width="wrap_content"
                 android:layout_height="match_parent"
                 android:gravity="top"
                 android:textSize="@dimen/gnt_text_size_small"
