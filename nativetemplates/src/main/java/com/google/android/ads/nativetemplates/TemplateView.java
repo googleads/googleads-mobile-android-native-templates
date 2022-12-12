@@ -118,24 +118,20 @@ public class TemplateView extends FrameLayout {
       callToActionView.setTypeface(ctaTypeface);
     }
 
-    int primaryTypefaceColor = styles.getPrimaryTextTypefaceColor();
-    if (primaryTypefaceColor > 0 && primaryView != null) {
-      primaryView.setTextColor(primaryTypefaceColor);
+    if (styles.getPrimaryTextTypefaceColor() != null && primaryView != null) {
+      primaryView.setTextColor(styles.getPrimaryTextTypefaceColor());
     }
 
-    int secondaryTypefaceColor = styles.getSecondaryTextTypefaceColor();
-    if (secondaryTypefaceColor > 0 && secondaryView != null) {
-      secondaryView.setTextColor(secondaryTypefaceColor);
+    if (styles.getSecondaryTextTypefaceColor() != null && secondaryView != null) {
+      secondaryView.setTextColor(styles.getSecondaryTextTypefaceColor());
     }
 
-    int tertiaryTypefaceColor = styles.getTertiaryTextTypefaceColor();
-    if (tertiaryTypefaceColor > 0 && tertiaryView != null) {
-      tertiaryView.setTextColor(tertiaryTypefaceColor);
+    if (styles.getTertiaryTextTypefaceColor() != null && tertiaryView != null) {
+      tertiaryView.setTextColor(styles.getTertiaryTextTypefaceColor());
     }
 
-    int ctaTypefaceColor = styles.getCallToActionTypefaceColor();
-    if (ctaTypefaceColor > 0 && callToActionView != null) {
-      callToActionView.setTextColor(ctaTypefaceColor);
+    if (styles.getCallToActionTypefaceColor() != null && callToActionView != null) {
+      callToActionView.setTextColor(styles.getCallToActionTypefaceColor());
     }
 
     float ctaTextSize = styles.getCallToActionTextSize();
