@@ -73,6 +73,7 @@
               android:layout_height="@dimen/gnt_no_size"
               android:orientation="vertical"
               android:id="@+id/content"
+              android:layout_marginStart="@dimen/gnt_default_margin"
               android:layout_marginLeft="@dimen/gnt_default_margin"
               app:layout_constraintBottom_toBottomOf="parent"
               app:layout_constraintStart_toEndOf="@id/icon"
@@ -145,7 +146,7 @@
                   android:id="@+id/rating_bar"
                   android:background="@color/gnt_white"
                   android:layout_width="wrap_content"
-                  android:layout_height="match_parent"
+                  android:layout_height="wrap_content"
                   android:textSize="@dimen/gnt_text_size_small"
                   android:textColor="@color/gnt_gray"
                   android:numStars="5"
@@ -158,7 +159,8 @@
                   app:layout_constraintBottom_toBottomOf="parent"
                   app:layout_constraintEnd_toEndOf="parent"
                   app:layout_constraintStart_toEndOf="@id/ad_notification_view"
-                  app:layout_constraintTop_toTopOf="parent">
+                  app:layout_constraintTop_toTopOf="parent"
+                  style="?android:attr/ratingBarStyleSmall">
 
               </RatingBar>
               <TextView
@@ -199,6 +201,7 @@
           app:layout_constraintEnd_toEndOf="parent"
           app:layout_constraintStart_toStartOf="parent"
           app:layout_constraintTop_toBottomOf="@id/middle"
+          android:paddingStart="@dimen/gnt_default_margin"
           android:layout_marginBottom="@dimen/gnt_default_margin"
           />
       <androidx.appcompat.widget.AppCompatButton

@@ -16,9 +16,10 @@ package com.google.android.ads.nativetemplates;
 
 import android.graphics.Typeface;
 import android.graphics.drawable.ColorDrawable;
+import androidx.annotation.Nullable;
 import com.google.errorprone.annotations.CanIgnoreReturnValue;
 
-/** A class containing the optional styling options for the Native Template. * */
+/** A class containing the optional styling options for the Native Template. */
 public class NativeTemplateStyle {
 
   // Call to action typeface.
@@ -28,7 +29,7 @@ public class NativeTemplateStyle {
   private float callToActionTextSize;
 
   // Call to action typeface color in the form 0xAARRGGBB.
-  private int callToActionTypefaceColor;
+  @Nullable private Integer callToActionTypefaceColor;
 
   // Call to action background color.
   private ColorDrawable callToActionBackgroundColor;
@@ -42,7 +43,7 @@ public class NativeTemplateStyle {
   private float primaryTextSize;
 
   // Primary text typeface color in the form 0xAARRGGBB.
-  private int primaryTextTypefaceColor;
+  @Nullable private Integer primaryTextTypefaceColor;
 
   // Primary text background color.
   private ColorDrawable primaryTextBackgroundColor;
@@ -58,7 +59,7 @@ public class NativeTemplateStyle {
   private float secondaryTextSize;
 
   // Secondary text typeface color in the form 0xAARRGGBB.
-  private int secondaryTextTypefaceColor;
+  @Nullable private Integer secondaryTextTypefaceColor;
 
   // Secondary text background color.
   private ColorDrawable secondaryTextBackgroundColor;
@@ -73,7 +74,7 @@ public class NativeTemplateStyle {
   private float tertiaryTextSize;
 
   // Tertiary text typeface color in the form 0xAARRGGBB.
-  private int tertiaryTextTypefaceColor;
+  @Nullable private Integer tertiaryTextTypefaceColor;
 
   // Tertiary text background color.
   private ColorDrawable tertiaryTextBackgroundColor;
@@ -89,7 +90,8 @@ public class NativeTemplateStyle {
     return callToActionTextSize;
   }
 
-  public int getCallToActionTypefaceColor() {
+  @Nullable
+  public Integer getCallToActionTypefaceColor() {
     return callToActionTypefaceColor;
   }
 
@@ -105,7 +107,8 @@ public class NativeTemplateStyle {
     return primaryTextSize;
   }
 
-  public int getPrimaryTextTypefaceColor() {
+  @Nullable
+  public Integer getPrimaryTextTypefaceColor() {
     return primaryTextTypefaceColor;
   }
 
@@ -121,7 +124,8 @@ public class NativeTemplateStyle {
     return secondaryTextSize;
   }
 
-  public int getSecondaryTextTypefaceColor() {
+  @Nullable
+  public Integer getSecondaryTextTypefaceColor() {
     return secondaryTextTypefaceColor;
   }
 
@@ -137,7 +141,8 @@ public class NativeTemplateStyle {
     return tertiaryTextSize;
   }
 
-  public int getTertiaryTextTypefaceColor() {
+  @Nullable
+  public Integer getTertiaryTextTypefaceColor() {
     return tertiaryTextTypefaceColor;
   }
 
@@ -149,7 +154,7 @@ public class NativeTemplateStyle {
     return mainBackgroundColor;
   }
 
-  /** A class that provides helper methods to build a style object. * */
+  /** A class that provides helper methods to build a style object. */
   public static class Builder {
 
     private NativeTemplateStyle styles;
