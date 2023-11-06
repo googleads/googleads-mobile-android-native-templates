@@ -3,6 +3,8 @@ apply plugin: 'com.android.library'
 android {
     compileSdkVersion 30
 
+    namespace 'com.google.android.ads.nativetemplates'
+    
     defaultConfig {
         minSdkVersion 16
         targetSdkVersion 30
