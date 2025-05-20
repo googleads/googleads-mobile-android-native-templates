@@ -37,6 +37,9 @@ import com.google.android.gms.ads.nativead.NativeAdView;
  */
 public class TemplateView extends FrameLayout {
 
+  private static final String MEDIUM_TEMPLATE = "medium_template";
+  private static final String SMALL_TEMPLATE = "small_template";
+
   private int templateType;
   private NativeTemplateStyle styles;
   private NativeAd nativeAd;
@@ -50,9 +53,7 @@ public class TemplateView extends FrameLayout {
   private MediaView mediaView;
   private Button callToActionView;
   private ConstraintLayout background;
-
-  private static final String MEDIUM_TEMPLATE = "medium_template";
-  private static final String SMALL_TEMPLATE = "small_template";
+  private LayoutInflater layoutInflater;
 
   public TemplateView(Context context) {
     super(context);
@@ -68,9 +69,48 @@ public class TemplateView extends FrameLayout {
     initView(context, attrs);
   }
 
-  public TemplateView(Context context, AttributeSet attrs, int defStyleAttr, int defStyleRes) {
+  public TemplateView(
+      Context context, @Nullable AttributeSet attrs, int defStyleAttr, int defStyleRes) {
     super(context, attrs, defStyleAttr, defStyleRes);
     initView(context, attrs);
+  }
+
+  private void initView(Context context, @Nullable AttributeSet attributeSet) {
+    if (attributeSet == null) {
+      return;
+    }
+    TypedArray typedArray =
+        context
+            .getTheme()
+            .obtainStyledAttributes(
+                /* set= */ attributeSet,
+                /* attrs= */ R.styleable.TemplateView,
+                /* defStyleAttr= */ 0,
+                /* defStyleRes= */ 0);
+    if (typedArray == null) {
+      return;
+    }
+
+    try {
+      templateType =
+          typedArray.getResourceId(
+              R.styleable.TemplateView_gnt_template_type, R.layout.gnt_medium_template_view);
+    } finally {
+      typedArray.recycle();
+    }
+
+    if (layoutInflater == null) {
+      setLayoutInflater(context);
+    }
+    layoutInflater.inflate(templateType, this);
+  }
+
+  private void setLayoutInflater(Context context) {
+    layoutInflater = (LayoutInflater) context.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
+  }
+
+  public NativeTemplateStyle getStyles() {
+    return styles;
   }
 
   public void setStyles(NativeTemplateStyle styles) {
@@ -83,10 +123,11 @@ public class TemplateView extends FrameLayout {
   }
 
   private void applyStyles() {
-
     Drawable mainBackground = styles.getMainBackgroundColor();
     if (mainBackground != null) {
-      background.setBackground(mainBackground);
+      if (background != null) {
+        background.setBackground(mainBackground);
+      }
       if (primaryView != null) {
         primaryView.setBackground(mainBackground);
       }
@@ -178,6 +219,17 @@ public class TemplateView extends FrameLayout {
     requestLayout();
   }
 
+  private boolean areAllViewsInitialized() {
+    return nativeAdView != null
+        && callToActionView != null
+        && primaryView != null
+        && secondaryView != null
+        && tertiaryView != null
+        && mediaView != null
+        && iconView != null
+        && ratingBar != null;
+  }
+
   private boolean adHasOnlyStore(NativeAd nativeAd) {
     String store = nativeAd.getStore();
     String advertiser = nativeAd.getAdvertiser();
@@ -187,6 +239,12 @@ public class TemplateView extends FrameLayout {
   public void setNativeAd(NativeAd nativeAd) {
     this.nativeAd = nativeAd;
 
+    if (!areAllViewsInitialized()) {
+      // Defensive check against potential NPEs if a view has not been initialized (which is
+      // expected if the template view was solely constructed from context).
+      return;
+    }
+
     String store = nativeAd.getStore();
     String advertiser = nativeAd.getAdvertiser();
     String headline = nativeAd.getHeadline();
@@ -195,20 +253,18 @@ public class TemplateView extends FrameLayout {
     Double starRating = nativeAd.getStarRating();
     NativeAd.Image icon = nativeAd.getIcon();
 
-    String secondaryText;
-
     nativeAdView.setCallToActionView(callToActionView);
     nativeAdView.setHeadlineView(primaryView);
     nativeAdView.setMediaView(mediaView);
     secondaryView.setVisibility(VISIBLE);
+
+    String secondaryText = "";
     if (adHasOnlyStore(nativeAd)) {
       nativeAdView.setStoreView(secondaryView);
       secondaryText = store;
     } else if (!TextUtils.isEmpty(advertiser)) {
       nativeAdView.setAdvertiserView(secondaryView);
       secondaryText = advertiser;
-    } else {
-      secondaryText = "";
     }
 
     primaryView.setText(headline);
@@ -249,7 +305,9 @@ public class TemplateView extends FrameLayout {
    * https://developers.google.com/admob/android/native-unified#destroy_ad
    */
   public void destroyNativeAd() {
-    nativeAd.destroy();
+    if (nativeAd != null) {
+      nativeAd.destroy();
+    }
   }
 
   public String getTemplateTypeName() {
@@ -259,23 +317,6 @@ public class TemplateView extends FrameLayout {
       return SMALL_TEMPLATE;
     }
     return "";
-  }
-
-  private void initView(Context context, AttributeSet attributeSet) {
-
-    TypedArray attributes =
-        context.getTheme().obtainStyledAttributes(attributeSet, R.styleable.TemplateView, 0, 0);
-
-    try {
-      templateType =
-          attributes.getResourceId(
-              R.styleable.TemplateView_gnt_template_type, R.layout.gnt_medium_template_view);
-    } finally {
-      attributes.recycle();
-    }
-    LayoutInflater inflater =
-        (LayoutInflater) context.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
-    inflater.inflate(templateType, this);
   }
 
   @Override
